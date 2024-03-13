@@ -8,6 +8,10 @@ import { useState } from "react";
 import { CiSettings } from "react-icons/ci";
 import { LuArrowLeftRight } from "react-icons/lu";
 import ToComponent from "./ToComponent";
+import { SiBinance, SiFantom, SiTether } from "react-icons/si";
+import { PiCurrencyCircleDollar } from "react-icons/pi";
+import { BsCurrencyBitcoin } from "react-icons/bs";
+import { TokenTypes } from "@/types";
 
 
 const SwapComponent = () => {
@@ -20,9 +24,22 @@ const SwapComponent = () => {
     {id: 6, value: 100}
   ])
   const [active, setActive] = useState(0)
-  const [amount, setAmount] = useState(0)
+  const [from, setFrom] = useState(0)
+  const [to, setTo] = useState(0)
+  const [tokens] = useState<TokenTypes[]>([
+    {id: 1, currency:'BNB', name: 'Binance coin', value: 1.2, icon: <SiBinance size={24} color="white" />, background: 'bg-[#F3BA2F]'},
+    {id: 2, currency:'ftm', name: 'Fantom', value: 10.242, icon: <SiFantom size={24} color="white" />, background: 'bg-[#13b5ec]'},
+    {id: 3, currency:'usdc', name: 'USD coin', value: 7000.242, icon: <PiCurrencyCircleDollar size={26} color="white" />, background: 'bg-[#2775CA]'},
+    {id: 4, currency:'usdt', name: 'Tather USD', value: 0.03, icon: <SiTether size={26} color="white" />, background: 'bg-[#26A17B]'},
+    {id: 5, currency:'btcb', name: 'Bitcoin', value: 1.00004, icon: <BsCurrencyBitcoin className='rotate-12' size={26} color="white" />, background: 'bg-yellow-600'},
+])
+const [selectedToken, setSelectedToken] = useState<TokenTypes|null>(null)
+console.log(selectedToken)
+  const onChangeTo = (e: any) => {
+    setTo(e.target.value)
+  }
   const onChange = (e: any) => {
-    setAmount(e.target.value)
+    setFrom(e.target.value)
   }
   return (
     <div className="bg-[#132542] w-full lg:w-[580px] p-6 rounded-[18px]">
@@ -41,7 +58,7 @@ const SwapComponent = () => {
      </div>
      </div>
      <InputSelect>
-     <CurrencyInput value={amount} onChange={onChange} />
+     <CurrencyInput value={from} onChange={onChange} />
      <CurrencySelect />
      </InputSelect>
      <div className="mt-5 grid grid-cols-6 gap-4 items-center">
@@ -71,7 +88,7 @@ const SwapComponent = () => {
       </div>
      </div>
      <div>
-      <ToComponent />
+      <ToComponent onChange={onChangeTo} to={to} tokens={tokens} selectedToken={selectedToken} setSelectedToken={setSelectedToken} />
       <div className="mt-8">
         <button className="cursor-pointer bg-gradient-to-r from-[#066C9C] via-[#01ADED] to-[#00E1D2] rounded-[40px] h-[54px] px-6 capitalize text-lg text-white block w-full">swap</button>
       </div>

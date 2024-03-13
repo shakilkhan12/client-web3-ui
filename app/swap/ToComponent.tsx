@@ -1,16 +1,18 @@
 import CurrencyInput from '@/components/input/CurrencyInput'
 import InputSelect from '@/components/input/InputSelect'
 import Model from '@/components/models/Model'
-import { CurrencySelect } from '@/components/select/CurrencySelect'
 import React, { useState } from 'react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import ModelContent from './ModelContent'
-
-const ToComponent = () => {
-    const [to, setTo] = useState(0)
-    const onChange = (e: any) => {
-      setTo(e.target.value)
-    }
+import { TokenTypes } from '@/types'
+type PropTypes = {
+  onChange: (e: any) => void;
+  to: number;
+  tokens: TokenTypes[]
+  selectedToken: TokenTypes | null,
+  setSelectedToken: (value: TokenTypes) => void;
+}
+const ToComponent = ({onChange, to, tokens, selectedToken, setSelectedToken}: PropTypes) => {
     const [modelState, setModelState] = useState(false);
     const toggleModel = () => {
       setModelState(!modelState)
@@ -28,13 +30,13 @@ const ToComponent = () => {
      <InputSelect>
     <CurrencyInput value={to} onChange={onChange} />
     <div className='flex items-center border border-white rounded-lg space-x-3 cursor-pointer min-w-[125px] h-[42px] justify-center px-3' onClick={() => toggleModel()}>
-        <span className='text-xs text-white capitalize'>select token</span>
+        <span className='text-xs text-white capitalize'>{selectedToken ? <div className='flex items-center space-x-2'> <span className={`flex items-center justify-center rounded-full w-[30px] h-[30px] ${selectedToken.background}`}>{selectedToken.icon}</span> <span className='uppercase text-xs font-medium'>{selectedToken.currency}</span></div> : 'select token'}</span>
         <MdKeyboardArrowDown className='text-white text-lg' />
 
     </div>
     </InputSelect>
     <Model label="Select a Token" toggleModel={toggleModel} modelState={modelState}>
-      <ModelContent />
+      <ModelContent tokens={tokens} selectedToken={selectedToken} setSelectedToken={setSelectedToken} toggleModel={toggleModel} />
     </Model>
     </>
     
