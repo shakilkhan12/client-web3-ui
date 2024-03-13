@@ -27,7 +27,7 @@ const ToComponent = () => {
      </div>
      <InputSelect>
     <CurrencyInput value={to} onChange={onChange} />
-    <div className='flex items-center border border-white rounded-lg space-x-3 cursor-pointer min-w-[125px] h-[42px] justify-center px-3' onClick={() => toggleModel(!modelState)}>
+    <div className='flex items-center border border-white rounded-lg space-x-3 cursor-pointer min-w-[125px] h-[42px] justify-center px-3' onClick={() => toggleModel()}>
         <span className='text-xs text-white capitalize'>select token</span>
         <MdKeyboardArrowDown className='text-white text-lg' />
 

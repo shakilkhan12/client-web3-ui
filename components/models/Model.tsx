@@ -14,7 +14,7 @@ const Model = ({label, children, modelState, toggleModel}: PropTypes) => {
         <div className='bg-[#132542] w-full lg:w-[636px] rounded-[16px] p-8'>
             <div className='flex items-center justify-between space-x-6'>
                 <h1 className='text-[22px] lg:text-[26px] font-medium text-white'>{label}</h1>
-                <IoCloseCircleOutline size={25} color="#d9d9d9" className='cursor-pointer' onClick={() => toggleModel(!modelState)} />
+                <IoCloseCircleOutline size={25} color="#d9d9d9" className='cursor-pointer' onClick={() => toggleModel()} />
 
             </div>
            {children}
