@@ -19,7 +19,7 @@ const SwapComponent = () => {
     {id: 5, value: 75},
     {id: 6, value: 100}
   ])
-  const [active, setActive] = useState(null)
+  const [active, setActive] = useState(0)
   const [amount, setAmount] = useState(0)
   const onChange = (e: any) => {
     setAmount(e.target.value)
