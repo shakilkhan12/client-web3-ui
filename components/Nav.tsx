@@ -27,7 +27,7 @@ const Nav = () => {
         {/* desktop links */}
         <ul className="hidden md:flex items-center space-x-[66px]">
           <Link
-            href="/"
+            href="/swap"
             className="text-lg font-normal text-white capitalize focus:text-white hover:text-white"
           >
             swap
@@ -55,7 +55,7 @@ const Nav = () => {
         {toggle && (
           <ul className="z-[999999] bg-[#010319] pb-5 flex md:hidden flex-col w-full absolute right-0 top-full ">
             <Link
-              href="/"
+              href="/swap"
               className="text-lg font-normal hover:bg-[#113253]/30 px-5 py-3 block w-full text-white capitalize focus:text-white hover:text-white transition-all duration-300 hover:pl-7"
             >
               swap
