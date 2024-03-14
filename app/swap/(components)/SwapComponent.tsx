@@ -99,7 +99,7 @@ const [priceImpact, setPriceImpact] = useState(0.444)
         </div>
         <button className="cursor-pointer bg-gradient-to-r from-[#066C9C] via-[#01ADED] to-[#00E1D2] rounded-[40px] h-[54px] px-6 capitalize text-lg text-white block w-full">swap</button>
       </div>
-      <Result price={price} minimum={minimum} priceImpact={priceImpact} />
+      <Result price={price} minimum={minimum} priceImpact={priceImpact} selectedToken={selectedToken} />
      </div>
     </div>
   )
