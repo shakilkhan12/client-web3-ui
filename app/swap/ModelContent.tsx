@@ -11,9 +11,9 @@ const ModelContent = ({tokens, selectedToken, setSelectedToken, toggleModel}: Pr
   
   return (
     <div>
-         <div className='mt-10 bg-[#2f3f59] h-[54px] rounded-full flex items-center px-5 space-x-5'>
+         <div className='mt-10 bg-[#2f3f59] h-[54px] rounded-full flex items-center px-5 space-x-2 md:space-x-5'>
             <CiSearch className='' color="white" size={23} />
-              <input type="text" className='bg-[#2f3f59] outline-none flex-1 text-white placeholder:text-xs md:placeholder:text-sm' placeholder='Search by name, symbol or address' />
+              <input type="text" className='bg-[#2f3f59] outline-none w-full text-white placeholder:text-[10px] md:placeholder:text-sm' placeholder='Search by name, symbol or address' />
             </div>
             <div>
               {tokens.map(item => {
