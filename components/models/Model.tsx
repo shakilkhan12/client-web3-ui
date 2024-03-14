@@ -10,7 +10,7 @@ type PropTypes = {
 const Model = ({label, children, modelState, toggleModel}: PropTypes) => {
 
   return modelState ? (
-    <div className='fixed inset-0 w-full h-full bg-black/30 backdrop-blur flex items-center justify-center p-6 z-[999999999999999]'>
+    <div className='fixed inset-0 w-full h-full bg-black/30 backdrop-blur flex items-center justify-center px-2 py-4 lg:p-6 z-[999999999999999]'>
         <div className='bg-[#132542] w-full lg:w-[636px] rounded-[16px] p-4 lg:px-8 lg:pb-8 lg:pt-5 max-h-[85vh] overflow-y-auto [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:rounded-full
   [&::-webkit-scrollbar-track]:bg-[#132542]
