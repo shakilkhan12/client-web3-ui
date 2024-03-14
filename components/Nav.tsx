@@ -79,9 +79,7 @@ const Nav = () => {
               more
             </Link>
             <li className="px-5 mt-4">
-              <button className="cursor-pointer bg-gradient-to-r from-[#066C9C] via-[#01ADED] to-[#00E1D2] rounded-[40px] h-[50px] px-6 capitalize text-base text-white inline-block md:hidden ">
-                connect wallet
-              </button>
+            <WalletButton />
             </li>
           </ul>
         )}
