@@ -5,7 +5,7 @@ type PropTypes = {
 }
 const CurrencyInput = ({value, onChange}: PropTypes) => {
   return (
-    <input type="text" className="text-[22px] font-semibold text-white outline-none bg-transparent" placeholder="0.00" value={value} onChange={onChange} />
+    <input type="number" className="w-full text-[22px] font-semibold text-white outline-none bg-transparent" placeholder="0.00" value={value} onChange={onChange} />
   )
 }
 

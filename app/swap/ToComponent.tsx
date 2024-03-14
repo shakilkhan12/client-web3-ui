@@ -1,7 +1,7 @@
 import CurrencyInput from '@/components/input/CurrencyInput'
 import InputSelect from '@/components/input/InputSelect'
 import Model from '@/components/models/Model'
-import React, { useState } from 'react'
+import React, { cloneElement, isValidElement, useState } from 'react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import ModelContent from './ModelContent'
 import { TokenTypes } from '@/types'
@@ -29,8 +29,8 @@ const ToComponent = ({onChange, to, tokens, selectedToken, setSelectedToken}: Pr
      </div>
      <InputSelect>
     <CurrencyInput value={to} onChange={onChange} />
-    <div className='flex items-center border border-white rounded-lg space-x-3 cursor-pointer min-w-[125px] h-[42px] justify-center px-3' onClick={() => toggleModel()}>
-        <span className='text-xs text-white capitalize'>{selectedToken ? <div className='flex items-center space-x-2'> <span className={`flex items-center justify-center rounded-full w-[30px] h-[30px] ${selectedToken.background}`}>{selectedToken.icon}</span> <span className='uppercase text-xs font-medium'>{selectedToken.currency}</span></div> : 'select token'}</span>
+    <div className='flex items-center border border-white rounded-lg space-x-1 cursor-pointer min-w-[125px] h-[42px] justify-center px-3' onClick={() => toggleModel()}>
+        <span className='text-[10px] w-full block  text-white capitalize'>{selectedToken ? <div className='flex items-center space-x-2'> <span className={`flex items-center justify-center rounded-full w-[30px] h-[30px] ${selectedToken.background}`}>{selectedToken.icon}</span> <span className='uppercase text-xs font-medium'>{selectedToken.currency}</span></div> : 'select token'}</span>
         <MdKeyboardArrowDown className='text-white text-lg' />
 
     </div>
