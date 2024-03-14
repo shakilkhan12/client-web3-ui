@@ -13,6 +13,7 @@ type PropTypes = {
   setSelectedToken: (value: TokenTypes) => void;
 }
 const ToComponent = ({onChange, to, tokens, selectedToken, setSelectedToken}: PropTypes) => {
+  console.log(selectedToken)
     const [modelState, setModelState] = useState(false);
     const toggleModel = () => {
       setModelState(!modelState)
@@ -23,8 +24,9 @@ const ToComponent = ({onChange, to, tokens, selectedToken, setSelectedToken}: Pr
       <span className="text-[#01DAD6] text-lg capitalize font-medium">to</span>
       <div className="flex items-center space-x-2">
       <span className="text-[#01DAD6] text-lg capitalize font-medium">balance:</span>
-      <span className="text-white text-lg capitalize font-medium">9.23</span>
-      <span className="text-white text-lg uppercase font-medium">usdc</span>
+      {!selectedToken?.value  ? <span className='text-white'>-----</span> : <><span className="text-white text-lg capitalize font-medium">{selectedToken?.value}</span>
+      <span className="text-white text-lg uppercase font-medium">{selectedToken?.currency}</span></>}
+      
       </div>
      </div>
      <InputSelect>

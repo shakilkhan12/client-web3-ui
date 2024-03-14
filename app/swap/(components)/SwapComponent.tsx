@@ -12,6 +12,7 @@ import { SiBinance, SiFantom, SiTether } from "react-icons/si";
 import { PiCurrencyCircleDollar } from "react-icons/pi";
 import { BsCurrencyBitcoin } from "react-icons/bs";
 import { TokenTypes } from "@/types";
+import Result from "./Result";
 
 
 const SwapComponent = () => {
@@ -34,7 +35,9 @@ const SwapComponent = () => {
     {id: 5, currency:'btcb', name: 'Bitcoin', value: 1.00004, icon: <BsCurrencyBitcoin className='rotate-12' size={26} color="white" />, background: 'bg-yellow-600'},
 ])
 const [selectedToken, setSelectedToken] = useState<TokenTypes|null>(null)
-console.log(selectedToken)
+const [price, setPrice] = useState(0.337)
+const [minimum, setMinimum] = useState(546)
+const [priceImpact, setPriceImpact] = useState(0.444)
   const onChangeTo = (e: any) => {
     setTo(e.target.value)
   }
@@ -89,9 +92,14 @@ console.log(selectedToken)
      </div>
      <div>
       <ToComponent onChange={onChangeTo} to={to} tokens={tokens} selectedToken={selectedToken} setSelectedToken={setSelectedToken} />
-      <div className="mt-8">
+      <div className="mt-4">
+        <div className="mb-4 flex items-center justify-between space-x-3">
+            <span className="text-white text-base md:text-lg capitalize">Slippage Tolerance</span>
+            <span className="text-white text-base md:text-lg capitalize">0.5%</span>
+        </div>
         <button className="cursor-pointer bg-gradient-to-r from-[#066C9C] via-[#01ADED] to-[#00E1D2] rounded-[40px] h-[54px] px-6 capitalize text-lg text-white block w-full">swap</button>
       </div>
+      <Result price={price} minimum={minimum} priceImpact={priceImpact} />
      </div>
     </div>
   )

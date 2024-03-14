@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SwapComponent from "./SwapComponent";
+import SwapComponent from "./(components)/SwapComponent";
 export const metadata: Metadata = {
   title: "Swap",
   description: "Swap component description",
