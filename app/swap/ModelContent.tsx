@@ -22,10 +22,10 @@ const ModelContent = ({tokens, selectedToken, setSelectedToken, toggleModel}: Pr
                   <div onClick={() => {
                     setSelectedToken(item)
                     toggleModel()
-                  }} className='flex items-center space-x-5 mt-8 border-b border-gray-700 pb-3 relative cursor-pointer justify-between'>
+                  }} className='flex items-center gap-2 mt-8 border-b border-gray-700 pb-3 relative cursor-pointer justify-between '>
                     <span className="absolute bottom-0 left-10 w-5 h-[1px] bg-[#01ADED]"></span>
                    <span className="absolute right-10 bottom-0 w-5 h-[1px] bg-[#01ADED]"></span>
-                   <div className='flex space-x-5'>
+                   <div className='flex space-x-5 '>
                    <span className={`flex items-center justify-center rounded-full w-[42px] h-[42px] ${item.background}`}>{item.icon}</span>
                    <div>
                    <span className='uppercase text-white text-xl md:text-2xl font-medium block'>{item.currency}</span>

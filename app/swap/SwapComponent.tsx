@@ -61,7 +61,7 @@ console.log(selectedToken)
      <CurrencyInput value={from} onChange={onChange} />
      <CurrencySelect />
      </InputSelect>
-     <div className="mt-5 grid grid-cols-6 gap-4 items-center">
+     <div className="mt-5 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center">
      {percentage.map(value => (
        <span key={value.id} className={`flex items-center justify-center border border-white rounded-[6px] px-4 py-2 text-[15px] font-medium text-white cursor-pointer ${active === value.id && 'bg-gradient-to-r from-[#066C9C] via-[#01ADED] to-[#00E1D2] border-transparent'}`} onClick={() => setActive(value.id)}>{value.value}%</span>
      ))}
