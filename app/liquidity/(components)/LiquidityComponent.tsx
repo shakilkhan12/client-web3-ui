@@ -17,7 +17,7 @@ const LiquidityComponent = () => {
                 <div className="flex-1 ">
                     <SearchInput />
                 </div>
-                <div className="w-full lg:w-5/12 gap-3 flex">
+                <div className="w-full lg:w-5/12 gap-3 flex flex-wrap">
                 <OutlineButton label="add" />
                 <OutlineButton label="remove" />
                 <Button label="claim all" />
