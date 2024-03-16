@@ -4,6 +4,7 @@ import "./globals.css";
 import Connection from "./Connection";
 import Nav from "@/components/Nav";
 import Image from "next/image";
+import ReduxProvider from "@/store/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='bg-[#010319] relative'><Connection>
+      <body className='bg-[#010319] relative'>
+        <ReduxProvider>
+        <Connection>
       <Nav />
       <div className="absolute left-0 top-0 w-full xl:w-[1170px] h-[645px] -z-[999]">
         <Image
@@ -37,7 +40,7 @@ export default function RootLayout({
           alt="line"
         />
       </div>
-        <div className="max-w-[1240px] w-full px-2 py-14 mx-auto min-h-[calc(100vh-100px)] flex items-center justify-center">{children}</div></Connection></body>
+        <div className="max-w-[1240px] w-full px-2 py-14 mx-auto min-h-[calc(100vh-100px)] flex items-center justify-center">{children}</div></Connection></ReduxProvider></body>
     </html>
   );
 }
