@@ -1,17 +1,16 @@
 'use client'
 
-import Button from "@/components/buttons/Button"
-import OutlineButton from "@/components/buttons/OutlineButton"
-import SearchInput from "@/components/input/SearchInput"
-import { SelectInput } from "@/components/select/SelectInput"
 import Link from "next/link"
-import Table from "./Table"
-import { useState } from "react"
+import Votes from "./Votes"
+import SearchInput from "@/components/input/SearchInput"
 import { useSelector } from "react-redux"
+import { useState } from "react"
 import { pools, tokens } from "@/store/slices/globalSlice"
-import { Span } from "next/dist/trace"
+import { SelectInput } from "@/components/select/SelectInput"
+import Table from "./Table"
+import VoteCard from "./VoteCard"
 
-const LiquidityComponent = () => {
+const VoteComponent = () => {
   const [search, setSearch] = useState('')
   const tokensData = useSelector(tokens)
   const poolsData = useSelector(pools)
@@ -22,17 +21,18 @@ const LiquidityComponent = () => {
   const poolsSelectedTokens = poolsData.filter(token => token.selected);
   return (
     <div>
-        <h1 className="text-white capitalize text-3xl md:text-[40px] font-bold">Liquidity</h1>
-        <p className="text-lg text-white mt-1">Pair your tokens to provide liquidity. Stake the LP tokens to earn BUG. <Link href="/" className="text-[#01DAD6] inline-block ml-1 capitalize underline">learn more</Link></p>
+        <div className="flex items-center justify-between gap-3">
+            <h1 className="text-white capitalize text-3xl md:text-[40px] font-bold">vote</h1>
+            <Link href="/" className="text-[#01DAD6] inline-block ml-1 capitalize underline">learn more</Link>
+        </div>
+        <Votes />
         <div className="bg-[#132542] rounded-[18px] p-6 mt-4">
             <div className="flex flex-wrap items-center gap-3">
                 <div className="flex-1 ">
                     <SearchInput value={search} onChange={onChange} />
                 </div>
                 <div className="w-full lg:w-5/12 gap-3 flex flex-wrap">
-                <OutlineButton label="add" />
-                <OutlineButton label="remove" />
-                <Button label="claim all" />
+                .......
                 </div>
             </div>
             <div className="mt-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center gap-3">
@@ -44,9 +44,10 @@ const LiquidityComponent = () => {
             <div className="mt-5">
               <Table />
             </div>
+            <VoteCard />
         </div>
     </div>
   )
 }
 
-export default LiquidityComponent
+export default VoteComponent

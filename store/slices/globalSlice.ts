@@ -10,6 +10,20 @@ const initialState = {
         {id: 4, label: 'ADA', selected: false},
         {id: 5, label: 'STETH', selected: false},
     ],
+    pool: [
+        {id: 0, label: 'veBUG', selected: false},
+        {id: 1, label: 'Stable', selected: false},
+        {id:2, label: 'Volatile', selected: false},
+        {id: 3, label: 'Boosted', selected: false},
+        {id: 4, label: 'Stacked', selected: false},
+    ],
+    votes: [
+      {id: 1, label: 'Your veWASP', value: '150.123K'},
+      {id: 2, label: 'Average APR', value: '120.51%'},
+      {id: 3, label: 'Epach 10 ends in', value: '5d 23h 19m'},
+      {id: 4, label: 'Total Bribes', value: '14,199.40$'},
+      {id: 5, label: 'Total Fees', value: '5,99.5$'},
+    ]
   }
 export const globalSlice = createSlice({
     name: 'global',
@@ -41,9 +55,28 @@ export const globalSlice = createSlice({
           );
         }
     },  
+    // Pool
+    poolSelectOnChange: (state, {payload}) => {
+      const copy = [...state.pool];
+      const changed = {...payload, selected: !payload.selected}
+      copy[payload.id] = changed;
+      state.pool = copy;
+    },
+    poolsSelectAll: (state) => {
+      state.pool.forEach(token => {
+          token.selected = true;
+        });
+    },
+    poolcClearAll: (state) => {
+      state.pool.forEach(token => {
+          token.selected = false;
+        });
+    },
 
     }
 })
-export const {tokenSelectOnChange, selectAll, clearAll, filterTokens} = globalSlice.actions;
+export const {tokenSelectOnChange, selectAll, clearAll, filterTokens,poolcClearAll,poolsSelectAll,poolSelectOnChange} = globalSlice.actions;
 export const tokens = (state: RootState) => state.globalSlice.tokens;
+export const pools = (state: RootState) => state.globalSlice.pool;
+export const votes = (state: RootState) => state.globalSlice.votes;
 export default globalSlice.reducer
