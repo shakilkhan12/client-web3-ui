@@ -17,11 +17,11 @@ export function CurrencySelect() {
   }
 
   return (
-    <Select value={currency} onValueChange={handle}>
-      <SelectTrigger className="w-[140px] bg-transparent text-white" value={currency} >
+    <Select value={currency} onValueChange={handle} defaultValue="usdc">
+      <SelectTrigger className="w-[140px] bg-transparent text-white border border-gray-200 h-[42px] rounded-[6px]" value={currency} >
         <SelectValue placeholder="Select currency" />
       </SelectTrigger>
-      <SelectContent className="bg-[#2f3f59] border-[#2f3f59] text-white ">
+      <SelectContent className="bg-[#2f3f59] border-[#2f3f59] text-white z-[9999999999]">
         <SelectGroup>
           <SelectItem value="usdc"  className="hover:!bg-white/10 hover:!text-white"><div className="flex items-center space-x-2 w-full "><span className="flex items-center justify-center w-6 h-6 bg-[#2775CA] rounded-full"><RiExchangeDollarFill size={18} color="white" /></span> <span className="uppercase text-xs font-medium">usdc</span></div></SelectItem>
           <SelectItem value="eth" className="hover:!bg-white/10 hover:!text-white"><div className="flex items-center space-x-2 "><span className="flex items-center justify-center w-6 h-6 bg-[#627EEA] rounded-full"><FaEthereum color="white" size={18} /></span> <span className="uppercase text-xs font-medium">eth</span></div></SelectItem>

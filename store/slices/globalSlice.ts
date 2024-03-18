@@ -23,7 +23,8 @@ const initialState = {
       {id: 3, label: 'Epach 10 ends in', value: '5d 23h 19m'},
       {id: 4, label: 'Total Bribes', value: '14,199.40$'},
       {id: 5, label: 'Total Fees', value: '5,99.5$'},
-    ]
+    ],
+    modelState: false
   }
 export const globalSlice = createSlice({
     name: 'global',
@@ -72,11 +73,15 @@ export const globalSlice = createSlice({
           token.selected = false;
         });
     },
+    toggleModel: (state) => {
+      state.modelState = !state.modelState;
+    }
 
     }
 })
-export const {tokenSelectOnChange, selectAll, clearAll, filterTokens,poolcClearAll,poolsSelectAll,poolSelectOnChange} = globalSlice.actions;
+export const {tokenSelectOnChange, selectAll, clearAll, filterTokens,poolcClearAll,poolsSelectAll,poolSelectOnChange, toggleModel} = globalSlice.actions;
 export const tokens = (state: RootState) => state.globalSlice.tokens;
 export const pools = (state: RootState) => state.globalSlice.pool;
 export const votes = (state: RootState) => state.globalSlice.votes;
+export const modelState = (state: RootState) => state.globalSlice.modelState
 export default globalSlice.reducer

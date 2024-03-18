@@ -1,14 +1,15 @@
+import { toggleModel } from '@/store/slices/globalSlice';
 import { TokenTypes } from '@/types';
 import React from 'react'
 import { CiSearch } from 'react-icons/ci'
+import { useDispatch } from 'react-redux';
 type PropTypes = {
   tokens: TokenTypes[],
-  selectedToken: TokenTypes | null,
   setSelectedToken: (value: TokenTypes) => void;
-  toggleModel: () => void
+
 }
-const ModelContent = ({tokens, selectedToken, setSelectedToken, toggleModel}: PropTypes) => {
-  
+const ModelContent = ({tokens, setSelectedToken, }: PropTypes) => {
+  const dispatch = useDispatch()
   return (
     <div>
          <div className='mt-10 bg-[#2f3f59] h-[54px] rounded-full flex items-center px-5 space-x-2 md:space-x-5'>
@@ -21,7 +22,7 @@ const ModelContent = ({tokens, selectedToken, setSelectedToken, toggleModel}: Pr
                 return (
                   <div onClick={() => {
                     setSelectedToken(item)
-                    toggleModel()
+                    dispatch(toggleModel())
                   }} className='flex items-center gap-2 mt-8 border-b border-gray-700 pb-3 relative cursor-pointer justify-between '>
                     <span className="absolute bottom-0 left-10 w-5 h-[1px] bg-[#01ADED]"></span>
                    <span className="absolute right-10 bottom-0 w-5 h-[1px] bg-[#01ADED]"></span>
