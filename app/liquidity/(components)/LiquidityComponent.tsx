@@ -26,6 +26,10 @@ const LiquidityComponent = () => {
     setButtonState(value)
     dispatch(toggleModel())
   }
+  const remove = (value: string) => {
+    setButtonState(value)
+    dispatch(toggleModel())
+  }
   const selectedTokens = tokensData.filter(token => token.selected);
   const poolsSelectedTokens = poolsData.filter(token => token.selected);
   console.log(buttonState)
@@ -43,7 +47,7 @@ const LiquidityComponent = () => {
                 </div>
                 <div className="w-full lg:w-5/12 gap-3 flex flex-wrap">
                 <OutlineButton label="add" onClick={add} />
-                <OutlineButton label="remove" />
+                <OutlineButton label="remove" onClick={remove} />
                 <Button label="claim all" />
                 </div>
             </div>
