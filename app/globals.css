@@ -13,6 +13,11 @@ input[type=number]::-webkit-outer-spin-button {
  input[type=number] {
   -moz-appearance: textfield; /* Firefox */
 }
+@layer utilities {
+  .btn-gradient {
+    @apply bg-gradient-to-r from-[#066C9C] via-[#01ADED] to-[#00E1D2];
+  }
+}
 @layer base {
   :root {
     --primary: 222.2 47.4% 11.2%;

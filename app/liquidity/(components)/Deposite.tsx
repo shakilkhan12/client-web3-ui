@@ -33,6 +33,10 @@ const Deposite = () => {
         <span className="text-[#8093AF] capitalize">balance:</span>
        <span className="text-white">4.21 BNB . Maximum</span>
      </div>
+     <div className="w-full h-[1px] bg-gray-700 relative my-5">
+     <span className="absolute top-0 left-10 w-5 h-[1px] bg-[#01ADED]"></span>
+      <span className="absolute right-10 top-0 w-5 h-[1px] bg-[#01ADED]"></span>
+     </div>
     </div>
   )
 }
