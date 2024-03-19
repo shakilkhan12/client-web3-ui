@@ -20,7 +20,7 @@ const LiquidityManagement = () => {
   const [secondActive, setSecondActive] = useState(2);
   return (
     <div>
-      <div className='border rounded-full grid grid-cols-4 items-center gap-3 p-[3px] mt-3 overflow-x-auto'>
+      <div className='border rounded-lg sm:rounded-full grid grid-cols-2 sm:grid-cols-4 items-center gap-3 p-[3px] mt-3 overflow-x-auto'>
         {tabs.map(tab => (
           <button className={classNames('text-lg capitalize text-white flex-1 rounded-full px-3 h-[46px]', {
             'bg-gradient-to-r from-[#066C9C] via-[#01ADED] to-[#00E1D2]': active === tab.id
