@@ -32,7 +32,6 @@ const LiquidityComponent = () => {
   }
   const selectedTokens = tokensData.filter(token => token.selected);
   const poolsSelectedTokens = poolsData.filter(token => token.selected);
-  console.log(buttonState)
   return (
     <div>
      {buttonState && <Model label={buttonState === 'add' ? 'Manage: ETH/BTC' : ''}>
