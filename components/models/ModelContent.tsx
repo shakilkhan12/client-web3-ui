@@ -1,15 +1,12 @@
-import { toggleModel } from '@/store/slices/globalSlice';
+import { selectToken, toggleModel, tokensData } from '@/store/slices/globalSlice';
 import { TokenTypes } from '@/types';
+import Image from 'next/image';
 import React from 'react'
 import { CiSearch } from 'react-icons/ci'
-import { useDispatch } from 'react-redux';
-type PropTypes = {
-  tokens: TokenTypes[],
-  setSelectedToken: (value: TokenTypes) => void;
-
-}
-const ModelContent = ({tokens, setSelectedToken, }: PropTypes) => {
+import { useDispatch, useSelector } from 'react-redux';
+const ModelContent = () => {
   const dispatch = useDispatch()
+  const tokens = useSelector(tokensData)
   return (
     <div>
          <div className='mt-10 bg-[#2f3f59] h-[54px] rounded-full flex items-center px-5 space-x-2 md:space-x-5'>
@@ -21,13 +18,14 @@ const ModelContent = ({tokens, setSelectedToken, }: PropTypes) => {
   
                 return (
                   <div onClick={() => {
-                    setSelectedToken(item)
+                    dispatch(selectToken(item))
                     dispatch(toggleModel())
                   }} className='flex items-center gap-2 mt-8 border-b border-gray-700 pb-3 relative cursor-pointer justify-between '>
                     <span className="absolute bottom-0 left-10 w-5 h-[1px] bg-[#01ADED]"></span>
                    <span className="absolute right-10 bottom-0 w-5 h-[1px] bg-[#01ADED]"></span>
+                
                    <div className='flex space-x-5 items-center'>
-                   <span className={`flex items-center justify-center rounded-full w-[42px] h-[42px] ${item.background}`}>{item.icon}</span>
+                   <Image src={item.icon} width={42} height={42} alt="icon" />
                    <div>
                    <span className='uppercase text-white text-xl md:text-2xl font-medium block'>{item.currency}</span>
                    <span className=' text-[#8093AF] text-sm font-medium block md:hidden'>{item.name}</span>

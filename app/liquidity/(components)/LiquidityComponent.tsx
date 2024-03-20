@@ -8,9 +8,10 @@ import Link from "next/link"
 import Table from "./Table"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { pools, toggleModel, tokens } from "@/store/slices/globalSlice"
+import { pools, toggleLiquidityModel, toggleModel, tokens } from "@/store/slices/globalSlice"
 import Model from "@/components/models/Model"
 import LiquidityManagement from "./LiquidityManagement"
+import LiquidityModel from "@/components/models/LiquidityModel"
 
 
 const LiquidityComponent = () => {
@@ -24,19 +25,19 @@ const LiquidityComponent = () => {
   const dispatch = useDispatch()
   const add = (value: string) => {
     setButtonState(value)
-    dispatch(toggleModel())
+    dispatch(toggleLiquidityModel())
   }
   const remove = (value: string) => {
     setButtonState(value)
-    dispatch(toggleModel())
+    dispatch(toggleLiquidityModel())
   }
   const selectedTokens = tokensData.filter(token => token.selected);
   const poolsSelectedTokens = poolsData.filter(token => token.selected);
   return (
     <div>
-     {buttonState && <Model label={buttonState === 'add' ? 'Manage: ETH/BTC' : ''}>
-      {buttonState && buttonState === 'add' ? <LiquidityManagement /> : ''}
-      </Model>}
+     {buttonState && <LiquidityModel label={'Manage: ETH/BTC'}>
+      {buttonState && buttonState === 'add' || buttonState === 'remove' ? <LiquidityManagement state={buttonState} /> : '' }
+      </LiquidityModel>}
         <h1 className="text-white capitalize text-3xl md:text-[40px] font-bold">Liquidity</h1>
         <p className="text-lg text-white mt-1">Pair your tokens to provide liquidity. Stake the LP tokens to earn BUG. <Link href="/" className="text-[#01DAD6] inline-block ml-1 capitalize underline">learn more</Link></p>
         <div className="bg-[#132542] rounded-[18px] p-6 mt-4">

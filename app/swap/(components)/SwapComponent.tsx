@@ -27,14 +27,7 @@ const SwapComponent = () => {
   const [active, setActive] = useState(0)
   const [from, setFrom] = useState(0)
   const [to, setTo] = useState(0)
-  const [tokens] = useState<TokenTypes[]>([
-    {id: 1, currency:'BNB', name: 'Binance coin', value: 1.2, icon: <SiBinance size={24} color="white" />, background: 'bg-[#F3BA2F]'},
-    {id: 2, currency:'ftm', name: 'Fantom', value: 10.242, icon: <SiFantom size={24} color="white" />, background: 'bg-[#13b5ec]'},
-    {id: 3, currency:'usdc', name: 'USD coin', value: 7000.242, icon: <PiCurrencyCircleDollar size={26} color="white" />, background: 'bg-[#2775CA]'},
-    {id: 4, currency:'usdt', name: 'Tather USD', value: 0.03, icon: <SiTether size={26} color="white" />, background: 'bg-[#26A17B]'},
-    {id: 5, currency:'btcb', name: 'Bitcoin', value: 1.00004, icon: <BsCurrencyBitcoin className='rotate-12' size={26} color="white" />, background: 'bg-yellow-600'},
-])
-const [selectedToken, setSelectedToken] = useState<TokenTypes|null>(null)
+
 const [price, setPrice] = useState(0.337)
 const [minimum, setMinimum] = useState(546)
 const [priceImpact, setPriceImpact] = useState(0.444)
@@ -91,7 +84,7 @@ const [priceImpact, setPriceImpact] = useState(0.444)
       </div>
      </div>
      <div>
-      <ToComponent onChange={onChangeTo} to={to} tokens={tokens} selectedToken={selectedToken} setSelectedToken={setSelectedToken} />
+      <ToComponent onChange={onChangeTo} to={to} />
       <div className="mt-4">
         <div className="mb-4 flex items-center justify-between space-x-3">
             <span className="text-white text-base md:text-lg capitalize">Slippage Tolerance</span>
@@ -99,7 +92,7 @@ const [priceImpact, setPriceImpact] = useState(0.444)
         </div>
         <button className="cursor-pointer bg-gradient-to-r from-[#066C9C] via-[#01ADED] to-[#00E1D2] rounded-[40px] h-[54px] px-6 capitalize text-lg text-white block w-full">swap</button>
       </div>
-      <Result price={price} minimum={minimum} priceImpact={priceImpact} selectedToken={selectedToken} />
+      <Result price={price} minimum={minimum} priceImpact={priceImpact} />
      </div>
     </div>
   )
