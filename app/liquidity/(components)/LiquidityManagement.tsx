@@ -7,6 +7,7 @@ import DepositeBottom from "./DepositeBottom"
 import Withdraw from "./Withdraw"
 import WithdrawBottom from "./WithdrawBottom"
 import Stacking from "./Stacking"
+import Positions from "./Positions"
 type PropTypes = {
   state: string
 }
@@ -37,6 +38,7 @@ const LiquidityManagement = ({state}: PropTypes) => {
         {active === 1 && <Deposite />}
         {active === 2 && <Withdraw />}
         {active === 3 && <Stacking />}
+        {active === 4 && <Positions />}
       </div>
       {active === 1 && <div className='border rounded-full grid grid-cols-2 items-center gap-3 p-[3px] mt-3 overflow-x-auto'>
         {secondTab.map(tab => (

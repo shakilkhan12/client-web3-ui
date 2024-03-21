@@ -6,17 +6,20 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { ReactNode, useState } from "react"
+import { FiMinus } from "react-icons/fi";
 import DropDownSearch from "../input/DropDownSearch"
 import TokenCheckboxes from "../checkboxes/TokenCheckboxes"
 import { useDispatch } from "react-redux"
 import { clearAll, filterTokens, poolcClearAll, poolsSelectAll, selectAll } from "@/store/slices/globalSlice"
 import PoolCheckboxes from "../checkboxes/PoolCheckboxes"
+import { GoPlus } from "react-icons/go";
 type PropTypes = {
     title: ReactNode,
     type: string
 }
 export function SelectInput({title, type}: PropTypes) {
   const [search, setSearch] = useState('')
+  const [min, setMin] = useState(100.00)
   const dispatch = useDispatch()
   const onChange = (e: any) => {
     setSearch(e.target.value)
@@ -44,6 +47,25 @@ export function SelectInput({title, type}: PropTypes) {
             <div>
               {type === 'token' && <TokenCheckboxes />}
               {type === 'pool' && <PoolCheckboxes />}
+              {type === 'apr' && <div>
+                  <span className="capitalize text-base font-medium text-white block">minimum</span>
+                  <div className="mt-3 flex items-center space-x-3 px-4 bg-[#132542] rounded-[8px] h-[54px]">
+                  <FiMinus className="cursor-pointer" color="white" size={22} onClick={() => setMin(min-1)} />
+                  <span className="flex-1 text-white text-lg text-center px-2">{min}</span>
+                  <GoPlus className="cursor-pointer" color="white" size={22} onClick={() => setMin(min+1)} />
+
+                  </div>
+                  <div className="mt-3">
+                  <span className="capitalize text-base font-medium text-white block">maximum</span>
+                  <div className="mt-3 flex items-center space-x-3 px-4 bg-[#132542] rounded-[8px] h-[54px]">
+                  <FiMinus className="cursor-pointer" color="white" size={22}  />
+                  <span className="flex-1 text-white text-lg text-center px-2">Maximum</span>
+                  <GoPlus className="cursor-pointer" color="white" size={22} />
+
+                  </div>
+                  </div>
+                  <button className="mt-4 btn-gradient block w-full rounded-[40px] h-[54px] text-lg font-medium capitalize px-4">apply</button>
+                </div>}
               
             </div>
           </div>
